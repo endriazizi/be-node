@@ -39,6 +39,7 @@ db.giocatore = require("./giocatore.model.js")(sequelize, Sequelize);
 db.punteggio = require("./punteggio.model.js")(sequelize, Sequelize);
 db.squadra = require("./squadra.model.js")(sequelize, Sequelize);
 db.statistica = require("./statistica.model.js")(sequelize, Sequelize);
+db.evento = require("./evento.model.js")(sequelize, Sequelize);
 
 
 // Address.belongsTo(Customer); 
