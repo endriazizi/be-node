@@ -1,10 +1,10 @@
 const db = require("../models");
-const Giocatore = db.giocatore;
+const Evento = db.evento;
 const User = db.users;
 const Op = db.Sequelize.Op;
 
 
-exports.creaGiocatore = (req, res) => {
+exports.creaEvento = (req, res) => {
   // Validate request
   // if (!req.body.title) {
   //   res.status(400).send({
@@ -14,17 +14,16 @@ exports.creaGiocatore = (req, res) => {
   // }
 
   // Create a Giocatore
-  const bodyGiocatore = {
-    nome: req.body.nome,
-    cognome: req.body.cognome,
+  const bodyEvento = {
+    regione: req.body.regione,
+    citta: req.body.citta,
+    fase: req.body.fase,
+    data: req.body.data
   };
 
 
-
-
-
   // req.user.createGiocatore(Giocatore)
-  Giocatore.create(bodyGiocatore)
+  Evento.create(bodyEvento)
     .then(data => {
 
       console.log("ciao");
@@ -38,8 +37,8 @@ exports.creaGiocatore = (req, res) => {
     });
 };
 //GET - ALL
-exports.getGiocatore = (req,res,next) => {
-  Giocatore.findAll()
+exports.getEvento = (req,res,next) => {
+  Evento.findAll()
 
   // Giocatore.findAll({include: [{ model : User, attributes : ['id','username','updatedAt']}]})
   // .then(players => { 
@@ -54,12 +53,12 @@ exports.getGiocatore = (req,res,next) => {
   //     });
   //     return Promise.all(promises);
   // })
-  .then(giocatori => {
+  .then(evento => {
       // const result =[];
       // result.push(players);
       // res.json(result)
-      console.log("GIOCATORI: ", giocatori);   
-         res.json(giocatori);
+      console.log("GIOCATORI: ", evento);   
+         res.json(evento);
       // res.json({ players : players});
   }).catch(
       err => console.log(err)
