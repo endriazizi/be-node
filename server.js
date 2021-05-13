@@ -39,13 +39,13 @@ app.use(bodyParser.urlencoded({
 const db = require("./app/models");
 const Role = db.roles;
 
-// db.sequelize.sync();
+db.sequelize.sync();
 // // force: true will drop the table if it already exists
 
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Database with { force: true }');
-  initial();
-});
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync Database with { force: true }');
+//   initial();
+// });
 
 // db.sequelize.sync().then(() => {
 //   console.log('Drop and Resync Database with { force: true }');
@@ -65,6 +65,7 @@ require('./app/routes/user.routes')(app);
 require('./app/routes/giocatore.route')(app);
 require('./app/routes/squadra.route')(app);
 require('./app/routes/evento.route')(app);
+require('./app/routes/gara.route')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
