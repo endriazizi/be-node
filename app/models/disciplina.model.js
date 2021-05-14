@@ -1,16 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
-  const Gara = sequelize.define("gara", {
+  const Disciplina = sequelize.define("disciplina", {
     id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true
     },
-    nome: {
+    nomeDisciplina: {
       type: Sequelize.STRING
     }
 
   });
 
-  return Gara;
+  return Disciplina;
 };

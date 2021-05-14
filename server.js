@@ -64,8 +64,11 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/giocatore.route')(app);
 require('./app/routes/squadra.route')(app);
+
+// AZZURRA
 require('./app/routes/evento.route')(app);
 require('./app/routes/gara.route')(app);
+require('./app/routes/disciplina.route')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

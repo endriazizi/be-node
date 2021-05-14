@@ -39,8 +39,11 @@ db.giocatore = require("./giocatore.model.js")(sequelize, Sequelize);
 db.punteggio = require("./punteggio.model.js")(sequelize, Sequelize);
 db.squadra = require("./squadra.model.js")(sequelize, Sequelize);
 db.statistica = require("./statistica.model.js")(sequelize, Sequelize);
+
+//AZZURRA
 db.evento = require("./evento.model.js")(sequelize, Sequelize);
 db.gara = require("./gara.model.js")(sequelize, Sequelize);
+db.disciplina = require("./disciplina.model.js")(sequelize, Sequelize);
 
 
 // Address.belongsTo(Customer); 
@@ -107,7 +110,6 @@ db.squadra.belongsToMany(db.partita, {
 // db.biglietto.belongsTo(db.partita, {as: 'role'})
 
 
-1
 
 db.biglietto.belongsTo(db.partita, {as: 'partita',foreignKey: 'partitaId'});   
 db.partita.hasMany(db.biglietto, {as: 'partita',foreignKey: 'partitaId'});
@@ -118,6 +120,10 @@ db.partita.hasMany(db.biglietto, {as: 'partita',foreignKey: 'partitaId'});
 //1:N
 db.evento.hasMany(db.gara);
 db.gara.belongsTo(db.evento);
+
+//1:N
+db.disciplina.hasMany(db.gara);
+db.gara.belongsTo(db.disciplina);
 
 
 //1:N
