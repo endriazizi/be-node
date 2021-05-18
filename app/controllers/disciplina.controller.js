@@ -66,3 +66,35 @@ exports.getDiscipline = (req,res,next) => {
 };
 
 
+exports.getEventoFilterByDisciplina = (req,res,next) => {
+  const query = req.query
+  console.log("query: ", req.query);
+  Disciplina.findAll({ where: query })
+
+  // Giocatore.findAll({include: [{ model : User, attributes : ['id','username','updatedAt']}]})
+  // .then(players => { 
+  //     promises = [];
+  //     players.forEach(p => {
+  //         const postWithLike = Like.count({ where: { postId: p.id } })
+  //             .then(likes => {
+  //                 p.dataValues.likes = likes;
+  //                 return p;
+  //         });
+  //         promises.push(postWithLike);
+  //     });
+  //     return Promise.all(promises);
+  // })
+  .then(discipline => {
+      // const result =[];
+      // result.push(players);
+      // res.json(result)
+      console.log("DISCIPLINE: ", discipline);   
+         res.json(discipline);
+      // res.json({ players : players});
+  }).catch(
+      err => console.log(err)
+  );
+};
+
+
+

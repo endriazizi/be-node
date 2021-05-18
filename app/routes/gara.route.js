@@ -21,4 +21,10 @@ module.exports = function(app) {
     // [authJwt.verifyToken, authJwt.isAdmin],
     garaController.getGare
   );
+
+  app.get(
+    "/api/lista/gare/eventi/filterbydisciplina",
+    // [authJwt.verifyToken, authJwt.isAdmin],
+    garaController.getFilterByDisciplina
+  );
 };
