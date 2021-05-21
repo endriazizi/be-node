@@ -32,26 +32,14 @@ db.sequelize = sequelize;
 //Carico i modelli relativi alla base dati
 db.users = require("./user.model.js")(sequelize, Sequelize);
 db.roles = require("../models/role.model.js")(sequelize, Sequelize);
-db.biglietto = require("./biglietto.model.js")(sequelize, Sequelize);
-db.ordine= require("./ordine.model.js")(sequelize, Sequelize);
-db.partita= require("./partita.model.js")(sequelize, Sequelize);
-db.giocatore = require("./giocatore.model.js")(sequelize, Sequelize);
-db.punteggio = require("./punteggio.model.js")(sequelize, Sequelize);
-db.squadra = require("./squadra.model.js")(sequelize, Sequelize);
-db.statistica = require("./statistica.model.js")(sequelize, Sequelize);
 
 //AZZURRA
 db.evento = require("./evento.model.js")(sequelize, Sequelize);
+db.punteggio = require("./punteggio.model.js")(sequelize, Sequelize);
 db.gara = require("./gara.model.js")(sequelize, Sequelize);
 db.disciplina = require("./disciplina.model.js")(sequelize, Sequelize);
+db.esercizio = require("./esercizio.model.js")(sequelize, Sequelize);
 
-
-// Address.belongsTo(Customer); 
-// Will add a customerId attribute to Address to hold the primary key value for Customer.
-db.statistica.belongsTo(db.squadra); 
-
-// db.users.belongsToMany(db.giocatore, { through: db.punteggi });
-// db.giocatore.belongsToMany(db.users, { through: db.punteggi });
 
 // -----------------------------------------------------------
 
@@ -66,37 +54,48 @@ db.users.belongsToMany(db.roles, {
   otherKey: "roleId"
 });
 
-// -----------------------------------------------------------
 
-// N:N un biglietto ha molti user tramite ordine
-db.biglietto.belongsToMany(db.users, {
-  through: db.ordine,
-  foreignKey: "bigliettoId",
-  otherKey: "userId"
-});
-// N:N un user ha molti biglietti tramite ordine
-db.users.belongsToMany(db.biglietto, {
-  through: db.ordine,
-  foreignKey: "userId",
-  otherKey: "bigliettoId"
-});
 
-// -----------------------------------------------------------
-
-// -----------------------------------------------------------
 
 // N:N una partita ha molte squadre tramite punteggio
-db.partita.belongsToMany(db.squadra, {
+db.gara.belongsToMany(db.esercizio, {
   through: db.punteggio,
-  foreignKey: "partitaId",
-  otherKey: "squadraId"
+  foreignKey: "garaId",
+  otherKey: "esercizioId"
 });
 // N:N una squadre ha molte partite tramite punteggio
-db.squadra.belongsToMany(db.partita, {
-  through: db.ordine,
-  foreignKey: "squadraId",
-  otherKey: "partitaId"
+db.esercizio.belongsToMany(db.gara, {
+  through: db.punteggio,
+  foreignKey: "esercizioId",
+  otherKey: "garaId"
 });
+
+
+
+
+// N:N una partita ha molte squadre tramite punteggio
+db.evento.belongsToMany(db.disciplina, {
+  through: db.gara,
+  foreignKey: "eventoId",
+  otherKey: "disciplinaId"
+});
+// N:N una squadre ha molte partite tramite punteggio
+db.disciplina.belongsToMany(db.evento, {
+  through: db.gara,
+  foreignKey: "disciplinaId",
+  otherKey: "eventoId"
+});
+
+
+
+// //1:N
+// db.evento.hasMany(db.gara);
+// db.gara.belongsTo(db.evento);
+
+// //1:N
+// db.disciplina.hasMany(db.gara);
+// db.gara.belongsTo(db.disciplina);
+
 
 // -----------------------------------------------------------
 
@@ -111,24 +110,12 @@ db.squadra.belongsToMany(db.partita, {
 
 
 
-db.biglietto.belongsTo(db.partita, {as: 'partita',foreignKey: 'partitaId'});   
-db.partita.hasMany(db.biglietto, {as: 'partita',foreignKey: 'partitaId'});
 
 // -----------------------------------------------------------
 
 
-//1:N
-db.evento.hasMany(db.gara);
-db.gara.belongsTo(db.evento);
-
-//1:N
-db.disciplina.hasMany(db.gara);
-db.gara.belongsTo(db.disciplina);
 
 
-//1:N
-db.squadra.hasMany(db.giocatore);
-db.giocatore.belongsTo(db.squadra);
 
 
 

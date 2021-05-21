@@ -1,16 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
-  const Partita = sequelize.define("partita", {
+  const Esercizio = sequelize.define("esercizio", {
     id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true
     },
-    data: {
-      type: Sequelize.DATEONLY,
-      allowNull: false
+    specialita: {
+      type: Sequelize.STRING
     }
+
   });
 
-  return Partita;
+  return Esercizio;
 };

@@ -1,16 +1,16 @@
 module.exports = (sequelize, Sequelize) => {
-  const Ordine = sequelize.define("ordini", {
+  const Atleta = sequelize.define("atleta", {
     id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true
     },
-    qta: {
-      type: Sequelize.STRING,
-      allowNull: false
+    categoria: {
+      type: Sequelize.STRING
     }
+
   });
 
-  return Ordine;
+  return Atleta;
 };
