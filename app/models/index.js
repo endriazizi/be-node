@@ -39,6 +39,9 @@ db.punteggio = require("./punteggio.model.js")(sequelize, Sequelize);
 db.gara = require("./gara.model.js")(sequelize, Sequelize);
 db.disciplina = require("./disciplina.model.js")(sequelize, Sequelize);
 db.esercizio = require("./esercizio.model.js")(sequelize, Sequelize);
+db.atleta = require("./atleta.model.js")(sequelize, Sequelize);
+db.societa = require("./societa.model.js")(sequelize, Sequelize);
+
 
 
 // -----------------------------------------------------------
@@ -87,6 +90,17 @@ db.disciplina.belongsToMany(db.evento, {
 });
 
 
+
+// db["Company"].hasMany(db["Department"], { foreignKey: 'companyId'});
+// db["Department"].belongsTo(db["Company"], {foreignKey: 'companyId'});
+// //1:N
+db.atleta.hasMany(db.punteggio, { foreignKey: 'atletaId'});
+db.punteggio.belongsTo(db.atleta, { foreignKey: 'atletaId'});
+
+
+// //1:N
+db.societa.hasMany(db.atleta, { foreignKey: 'societaId'});
+db.atleta.belongsTo(db.societa, { foreignKey: 'societaId'});
 
 // //1:N
 // db.evento.hasMany(db.gara);

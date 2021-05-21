@@ -1,18 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
-  const Atleta = sequelize.define("atleta", {
-    codiceFIscale: {
+  const Societa = sequelize.define("societa", {
+    nomeSocieta: {
       type: Sequelize.STRING,
       allowNull: false,
       primaryKey: true
     },
-    nome: {
-      type: Sequelize.STRING
-    },
-    cognome: {
+    numeroAtleti: {
       type: Sequelize.STRING
     }
 
   });
 
-  return Atleta;
+  return Societa;
 };

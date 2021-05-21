@@ -69,6 +69,8 @@ require('./app/routes/evento.route')(app);
 require('./app/routes/gara.route')(app);
 require('./app/routes/disciplina.route')(app);
 require('./app/routes/esercizio.route')(app);
+require('./app/routes/atleta.route')(app);
+require('./app/routes/societa.route')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

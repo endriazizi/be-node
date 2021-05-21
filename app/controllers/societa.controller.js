@@ -1,12 +1,10 @@
 const db = require("../models");
-const Atleta = db.Atleta;
+const Societa = db.Societa;
 const User = db.users;
-const Evento = db.evento;
-const Disciplina = db.disciplina;
 const Op = db.Sequelize.Op;
 
 
-exports.creaAtleta = (req, res) => {
+exports.creaSocieta = (req, res) => {
   // Validate request
   // if (!req.body.title) {
   //   res.status(400).send({
@@ -16,14 +14,14 @@ exports.creaAtleta = (req, res) => {
   // }
 
   // Create a Giocatore
-  const bodyAtleta = {
+  const bodySocieta = {
     categoria: req.body.categoria
 
   };
 
 
   // req.user.createGiocatore(Giocatore)
-  Atleta.create(bodyAtleta)
+  Societa.create(bodSocieta)
     .then(data => {
 
       console.log("ciao");
@@ -36,9 +34,9 @@ exports.creaAtleta = (req, res) => {
     });
 };
 //GET - ALL
-exports.getAtleti = (req, res, next) => {
+exports.getSocieta = (req, res, next) => {
   console.log("zioooo mariooooo");
-  Atleta.findAll(
+  Societa.findAll(
     // {
     //   include: [
     //     {
@@ -63,12 +61,12 @@ exports.getAtleti = (req, res, next) => {
     //     });
     //     return Promise.all(promises);
     // })
-    .then(Atleta => {
+    .then(Societa => {
       // const result =[];
       // result.push(players);
       // res.json(result)
-      console.log("GIOCATORI: ", Atleta);
-      res.json(Atleta);
+      console.log("GIOCATORI: ", Societa);
+      res.json(Societa);
       // res.json({ players : players});
     }).catch(
       err => console.log(err)
