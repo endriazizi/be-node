@@ -1,5 +1,12 @@
 # Node.js – JWT Authentication & Authorization example with JSONWebToken & Sequelize
 
+# SQL:
+## Elenco degli eventi in una determinata regione e in una specifica data
+
+## Elenco degli atleti che in una (gara) competizione hanno superato un determinato punteggio totale
+
+## Elenco di tutti gli atleti che hanno partecipato a gare su una medesima disciplina, ordinato in base al numero di gare fatte da ciascuno.
+
 For more detail, please visit:
 > [Node.js JWT Authentication & Authorization example](https://bezkoder.com/node-js-jwt-authentication-mysql/)
 
