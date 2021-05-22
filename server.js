@@ -42,15 +42,15 @@ const Role = db.roles;
 // db.sequelize.sync();
 // // force: true will drop the table if it already exists
 
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Database with { force: true }');
-  initial();
-});
-
-// db.sequelize.sync().then(() => {
+// db.sequelize.sync({force: true}).then(() => {
 //   console.log('Drop and Resync Database with { force: true }');
-//   // initial();
+//   initial();
 // });
+
+db.sequelize.sync().then(() => {
+  console.log('Drop and Resync Database with { force: true }');
+  // initial();
+});
 
 // simple route
 app.get("/", (req, res) => {
@@ -67,6 +67,7 @@ require('./app/routes/user.routes')(app);
 // AZZURRA
 require('./app/routes/evento.route')(app);
 require('./app/routes/gara.route')(app);
+require('./app/routes/punteggio.route')(app);
 require('./app/routes/disciplina.route')(app);
 require('./app/routes/esercizio.route')(app);
 require('./app/routes/atleta.route')(app);

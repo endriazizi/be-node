@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Atleta = sequelize.define("atleta", {
-    codiceFIscale: {
+    codiceFiscale: {
       type: Sequelize.STRING,
       allowNull: false,
       primaryKey: true

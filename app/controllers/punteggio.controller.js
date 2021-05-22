@@ -1,12 +1,15 @@
 const db = require("../models");
-const Gara = db.gara;
+const Punteggio = db.punteggio;
 const User = db.users;
 const Evento = db.evento;
 const Disciplina = db.disciplina;
+const Gara = db.gara;
+const Esercizio = db.esercizio;
+const Atleta = db.atleta;
 const Op = db.Sequelize.Op;
 
 
-exports.creaGara = (req, res) => {
+exports.creaPunteggio = (req, res) => {
   // Validate request
   // if (!req.body.title) {
   //   res.status(400).send({
@@ -16,17 +19,23 @@ exports.creaGara = (req, res) => {
   // }
 
   // Create a Giocatore
-  const bodyGara = {
-    categoria: req.body.categoria,
-    eventoId: req.body.eventoId,
-    disciplinaId: req.body.disciplinaId
+  const bodyPunteggio = {
+    difficolta: req.body.difficolta,
+    penalita: req.body.penalita,
+    esecuzione: req.body.esecuzione,
+    totalePunti: req.body.totalePunti,
+    garaId: req.body.garaId,
+    esercizioId: req.body.esercizioId,
+    codiceFiscale: req.body.codiceFiscale
 
   };
 
 
   // req.user.createGiocatore(Giocatore)
-  Gara.create(bodyGara)
+  Punteggio.create(bodyPunteggio)
     .then(data => {
+
+      console.log("ciao");
       res.send(data);
     })
     .catch(err => {
@@ -36,23 +45,42 @@ exports.creaGara = (req, res) => {
     });
 };
 //GET - ALL
-exports.getGare = (req, res, next) => {
+exports.getPunteggi = (req, res, next) => {
   console.log("zioooo mariooooo");
-  Gara.findAll({
-      include: [{
-        model: Evento
-      },
-      {
-        model: Disciplina
-      }
-    ]
-    })
-    .then(gara => {
+  Punteggio.findAll(
+    {
+      include: Esercizio
+      //  [{
+      //   model: Gara
+      // },
+      // {
+      //   model: Esercizio
+      // },
+      // {
+      //   model: Atleta
+      // }]
+    }
+    )
+
+    // Giocatore.findAll({include: [{ model : User, attributes : ['id','username','updatedAt']}]})
+    // .then(players => { 
+    //     promises = [];
+    //     players.forEach(p => {
+    //         const postWithLike = Like.count({ where: { postId: p.id } })
+    //             .then(likes => {
+    //                 p.dataValues.likes = likes;
+    //                 return p;
+    //         });
+    //         promises.push(postWithLike);
+    //     });
+    //     return Promise.all(promises);
+    // })
+    .then(punteggio => {
       // const result =[];
       // result.push(players);
       // res.json(result)
-      console.log("GIOCATORI: ", gara);
-      res.json(gara);
+      console.log("GIOCATORI: ", punteggio);
+      res.json(punteggio);
       // res.json({ players : players});
     }).catch(
       err => console.log(err)

@@ -25,9 +25,9 @@ module.exports = function(app) {
 
   //http://localhost:3000/api/lista/discipline?disciplina=salto
   app.get(
-    `/api/lista/eventobydisciplina`,
+    `/api/cerca/disciplina`,
     // [authJwt.verifyToken, authJwt.isAdmin],
-    disciplinaController.getEventoFilterByDisciplina
+    disciplinaController.searchDisciplina
   );
 
 };

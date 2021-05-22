@@ -39,27 +39,8 @@ exports.creaEvento = (req, res) => {
 //GET - ALL
 exports.getEvento = (req,res,next) => {
   Evento.findAll()
-
-  // Giocatore.findAll({include: [{ model : User, attributes : ['id','username','updatedAt']}]})
-  // .then(players => { 
-  //     promises = [];
-  //     players.forEach(p => {
-  //         const postWithLike = Like.count({ where: { postId: p.id } })
-  //             .then(likes => {
-  //                 p.dataValues.likes = likes;
-  //                 return p;
-  //         });
-  //         promises.push(postWithLike);
-  //     });
-  //     return Promise.all(promises);
-  // })
-  .then(evento => {
-      // const result =[];
-      // result.push(players);
-      // res.json(result)
-      console.log("GIOCATORI: ", evento);   
+  .then(evento => { 
          res.json(evento);
-      // res.json({ players : players});
   }).catch(
       err => console.log(err)
   );

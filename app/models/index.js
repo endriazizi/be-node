@@ -89,26 +89,32 @@ db.disciplina.belongsToMany(db.evento, {
   otherKey: "eventoId"
 });
 
+// //1:N
+db.evento.hasMany(db.gara);
+db.gara.belongsTo(db.evento);
+
+// //1:N
+db.disciplina.hasMany(db.gara);
+db.gara.belongsTo(db.disciplina);
+
 
 
 // db["Company"].hasMany(db["Department"], { foreignKey: 'companyId'});
 // db["Department"].belongsTo(db["Company"], {foreignKey: 'companyId'});
 // //1:N
-db.atleta.hasMany(db.punteggio, { foreignKey: 'atletaId'});
-db.punteggio.belongsTo(db.atleta, { foreignKey: 'atletaId'});
+db.atleta.hasMany(db.punteggio, { foreignKey: 'codiceFiscale'});
+db.punteggio.belongsTo(db.atleta, { foreignKey: 'codiceFiscale'});
+
+
+// db.atleta.hasMany(db.punteggio);
+// db.punteggio.belongsTo(db.atleta);
 
 
 // //1:N
 db.societa.hasMany(db.atleta, { foreignKey: 'societaId'});
 db.atleta.belongsTo(db.societa, { foreignKey: 'societaId'});
 
-// //1:N
-// db.evento.hasMany(db.gara);
-// db.gara.belongsTo(db.evento);
 
-// //1:N
-// db.disciplina.hasMany(db.gara);
-// db.gara.belongsTo(db.disciplina);
 
 
 // -----------------------------------------------------------

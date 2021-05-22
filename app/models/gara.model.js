@@ -8,6 +8,12 @@ module.exports = (sequelize, Sequelize) => {
     },
     categoria: {
       type: Sequelize.STRING
+    },
+    eventoId: {
+      type: Sequelize.INTEGER
+    },
+    disciplinaId: {
+      type: Sequelize.INTEGER
     }
 
   });

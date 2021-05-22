@@ -1,5 +1,5 @@
 const db = require("../models");
-const Atleta = db.Atleta;
+const Atleta = db.atleta;
 const User = db.users;
 const Op = db.Sequelize.Op;
 
@@ -15,10 +15,15 @@ exports.creaAtleta = (req, res) => {
 
   // Create a Giocatore
   const bodyAtleta = {
-    categoria: req.body.categoria
+
+    codiceFiscale: req.body.codiceFiscale,
+    nome: req.body.nome,
+    cognome: req.body.cognome
 
   };
 
+
+  console.log("bodyAtleta: ", bodyAtleta);
 
   // req.user.createGiocatore(Giocatore)
   Atleta.create(bodyAtleta)
@@ -37,15 +42,15 @@ exports.creaAtleta = (req, res) => {
 exports.getAtleti = (req, res, next) => {
   console.log("zioooo mariooooo");
   Atleta.findAll(
-    // {
-    //   include: [
-    //     {
-    //     model: Evento
-    //   },
-    //   {
-    //     model: Disciplina
-    //   }]
-    //  }
+      // {
+      //   include: [
+      //     {
+      //     model: Evento
+      //   },
+      //   {
+      //     model: Disciplina
+      //   }]
+      //  }
     )
 
     // Giocatore.findAll({include: [{ model : User, attributes : ['id','username','updatedAt']}]})
@@ -102,8 +107,7 @@ exports.getFilterByDisciplina = (req, res, next) => {
   Gara.findAll(
 
       {
-        include: [
-          {
+        include: [{
             model: Disciplina,
             where: {
               nomeDisciplina: query
@@ -111,7 +115,7 @@ exports.getFilterByDisciplina = (req, res, next) => {
             },
 
             // "nomeDisciplina": "salto in alto",
-            
+
           },
           {
             model: Evento
