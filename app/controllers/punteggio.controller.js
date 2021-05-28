@@ -108,27 +108,20 @@ exports.searchPost = (req, res, next) => {
 
 
 //GET - ALL
-exports.getFilterByDisciplina = (req, res, next) => {
-  const query = req.query.nomeDisciplina;
+exports.getAtletiFIlterByPunteggio = (req, res, next) => {
+  const query = req.query.totalePunti;
   // const query = query.param;
   console.log("zioooo mariooooo");
   console.log("nomeDisciplina: ", query);
-  Gara.findAll(
+  Punteggio.findAll(    { where: { totalePunti: query }},
 
       {
         include: [
           {
-            model: Disciplina,
-            where: {
-              nomeDisciplina: query
-              // query
-            },
-
-            // "nomeDisciplina": "salto in alto",
-            
+            model: Gara            
           },
           {
-            model: Evento
+            model: Atleta
           }
         ]
       }

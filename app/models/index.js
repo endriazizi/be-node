@@ -99,11 +99,16 @@ db.gara.belongsTo(db.disciplina);
 
 
 
+
+
 // db["Company"].hasMany(db["Department"], { foreignKey: 'companyId'});
 // db["Department"].belongsTo(db["Company"], {foreignKey: 'companyId'});
 // //1:N
 db.atleta.hasMany(db.punteggio, { foreignKey: 'codiceFiscale'});
 db.punteggio.belongsTo(db.atleta, { foreignKey: 'codiceFiscale'});
+
+db.gara.hasMany(db.punteggio, { foreignKey: 'garaId'});
+db.punteggio.belongsTo(db.gara, { foreignKey: 'garaId'});
 
 
 // db.atleta.hasMany(db.punteggio);

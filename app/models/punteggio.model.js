@@ -19,15 +19,15 @@ module.exports = (sequelize, Sequelize) => {
     totalePunti: {
       type: Sequelize.INTEGER
     },
-    // garaId: {
-    //   type: Sequelize.INTEGER
-    // },
-    // esercizioId: {
-    //   type: Sequelize.INTEGER
-    // },
-    // codiceFiscale: {
-    //   type: Sequelize.STRING
-    // }
+    garaId: {
+      type: Sequelize.INTEGER
+    },
+    esercizioId: {
+      type: Sequelize.INTEGER
+    },
+    codiceFiscale: {
+      type: Sequelize.STRING
+    }
 
   });
 

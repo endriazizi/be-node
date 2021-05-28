@@ -22,6 +22,14 @@ module.exports = function(app) {
     punteggioController.getPunteggi
   );
 
+  //Elenco degli atleti che in una competizione hanno superato un determinato punteggio totale, ad esempio: punteggio totale >= 5
+
+  app.get(
+    "/api/lista/atleti/gara/filterbypunteggio",
+    // [authJwt.verifyToken, authJwt.isAdmin],
+    punteggioController.getAtletiFIlterByPunteggio
+  );
+
   // app.get(
   //   "/api/lista/gare/eventi/filterbydisciplina",
   //   // [authJwt.verifyToken, authJwt.isAdmin],
